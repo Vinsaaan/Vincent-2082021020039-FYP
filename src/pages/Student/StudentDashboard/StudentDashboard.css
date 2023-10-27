@@ -1,0 +1,155 @@
+body {
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.student-dashboard-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  color: #333;
+  background-color: #fafafa;
+}
+
+.student-welcome-title {
+  text-align: center;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.student-dashboard-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: -10px;
+}
+
+.student-recent-activity {
+  background-color: #f8ffff;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  margin-left: 10px;
+  margin-bottom: 20px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 65%;
+}
+
+.student-recent-activity h2 {
+  text-align: center;
+}
+
+.student-activity.student-even,
+.student-activity.student-odd {
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+.student-activity.student-even {
+  background-color: #cfe9ff;
+}
+
+.student-activity.student-odd {
+  background-color: #cfdeff;
+}
+
+.student-right-side-content {
+  width: 30%;
+}
+
+.student-quiz-code-box,
+.student-job-listing-box {
+  border: 1px solid rgb(0, 0, 0);
+  background: white;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.student-quiz-input-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#student-quiz-code-field {
+  padding: 10px;
+  width: 50%;
+  margin-right: 15px;
+}
+
+#student-code-button {
+  padding: 10px 20px;
+  background-color: #48b0ff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+#student-code-button:hover {
+  background-color: #159aff;
+  color: #ffffff;
+}
+
+.student-quiz-code-box {
+  background-color: #f8ffff;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 90%;
+}
+
+.student-job-listing-box {
+  background-color: #fff8fe;
+  border: 2px solid #000000;
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 90%;
+}
+
+.student-job-listing-box h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: 500;
+}
+
+.student-job-listing-box ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 38px;
+}
+
+.student-job-listing-box li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 2px solid #000000;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.student-job-listing-box li:hover {
+  background-color: #fff1fd;
+}
+
+.student-job-listing-box img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 30px;
+}

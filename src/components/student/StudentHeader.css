@@ -1,0 +1,84 @@
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px 50px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  max-height: 50px;
+}
+
+.left,
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  flex-grow: 2;
+}
+
+.nav-item.with-dropdown {
+  margin: 0 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+}
+
+.nav-item.with-dropdown .dropdown {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  top: 100%;
+  left: 0;
+  white-space: nowrap;
+}
+
+.nav-item.with-dropdown:hover .dropdown {
+  display: block;
+}
+
+.nav-item.with-dropdown .dropdown a {
+  padding: 10px 20px;
+  color: black;
+  transition: background-color 0.3s;
+}
+
+.nav-item.with-dropdown .dropdown a:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.button1 {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: 2px solid;
+  color: #fff;
+  background: #9b59b6;
+  border-color: #9b59b6;
+  font-weight: bold;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.button1:hover {
+  background: #8e44ad;
+  border-color: #fff;
+}

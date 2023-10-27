@@ -1,0 +1,9 @@
+body {
+  font-family: "Nunito", sans-serif;
+  background-color: #fafafa;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+}

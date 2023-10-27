@@ -1,0 +1,96 @@
+body {
+  background-color: #fafafa;
+}
+
+.job-container {
+  padding-left: 200px !important;
+  text-align: center;
+  max-width: 1100px !important;
+  margin: auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.job-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.job-table,
+.job-table th,
+.job-table td {
+  border: 1px solid black;
+}
+
+.job-table th,
+.job-table td {
+  padding: 10px;
+  text-align: left; /* Set the default alignment to left */
+}
+
+/* Modified styles to center only the No. column */
+.job-table th:nth-child(1),
+.job-table td:nth-child(1) {
+  text-align: center;
+}
+
+.job-table th {
+  background-color: #ffd4fa;
+}
+
+/* Adjusting the width of the No. column */
+.job-table th:nth-child(1),
+.job-table td:nth-child(1) {
+  width: 50px;
+}
+
+tr.even {
+  background-color: #cfe9ff;
+}
+
+tr.odd {
+  background-color: #cfdeff;
+}
+
+.code {
+  color: #673ab7;
+}
+
+.applicant-table th {
+  cursor: pointer;
+}
+
+.status-pending {
+  background-color: yellow;
+  color: black; /* Adjust text color if needed */
+}
+
+.status-scheduled {
+  background-color: green;
+  color: white; /* Adjust text color if needed */
+}
+
+.status-rejected {
+  background-color: red;
+  color: white; /* Adjust text color if needed */
+}
+
+/*
+.status-pending {
+  color: yellow;
+  font-weight: bold;
+}
+
+.status-scheduled {
+  color: green;
+  font-weight: bold;
+}
+
+.status-rejected {
+  color: red;
+  font-weight: bold;
+}
+*/

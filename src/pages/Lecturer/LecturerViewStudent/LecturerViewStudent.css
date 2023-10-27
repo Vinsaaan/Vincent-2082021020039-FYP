@@ -1,0 +1,108 @@
+body.lecturer-view-student-background {
+  background-color: #fafafa;
+}
+
+.lecturer-view-student .content {
+  max-width: 1000px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin-left: 350px;
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.spacing {
+  margin-top: 50px;
+}
+
+.students-list {
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.table-header {
+  background-color: #ffd4fa;
+  display: flex;
+  padding: 10px;
+  font-weight: bold; /* Make first row bold */
+  justify-content: center; /* Center text content */
+  align-items: center;
+}
+
+.student-item {
+  display: flex;
+  padding: 10px;
+  cursor: pointer;
+  justify-content: center; /* Center text content */
+  align-items: center;
+}
+
+.student-item:hover {
+  background-color: #e6f7ff !important;
+}
+
+.student-item.even {
+  background-color: #cfe9ff;
+}
+
+.student-item.odd {
+  background-color: #cfdeff;
+}
+
+.table-header div,
+.student-item div {
+  text-align: center;
+  padding: 8px 12px; /* Adjusted padding for more space efficiency */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Specific styling for each column, ensuring none are too wide or too narrow */
+.table-header div:nth-child(1),
+.student-item div:nth-child(1) {
+  flex: 0.6; /* Adjusted for narrow content */
+}
+
+.table-header div:nth-child(2),
+.student-item div:nth-child(2) {
+  flex: 2; /* Gave more space for name */
+}
+
+.table-header div:nth-child(3),
+.student-item div:nth-child(3) {
+  flex: 1.5; /* Adjusted to ensure the column isn’t too narrow */
+}
+
+.table-header div:nth-child(4),
+.student-item div:nth-child(4) {
+  flex: 1.8; /* Adjusted for email content */
+}
+
+.table-header div:nth-child(5),
+.student-item div:nth-child(5) {
+  flex: 1.2; /* Adjusted for phone number content */
+}
+
+.grades {
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-top: 1px solid #ccc;
+  text-align: left; /* Return text alignment to left for grades */
+}
+
+.student-item div,
+.table-header div {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

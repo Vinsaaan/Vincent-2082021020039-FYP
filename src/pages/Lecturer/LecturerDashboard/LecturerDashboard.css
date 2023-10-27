@@ -1,0 +1,43 @@
+body.lecturer-background {
+  background-color: #fafafa;
+}
+
+.lecturer-dashboard {
+  max-width: 1000px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #333;
+  width: 100%;
+  margin-left: 350px;
+}
+
+.welcome-title {
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.recent-activity {
+  margin-top: 20px;
+  border: 1px solid rgb(0, 0, 0);
+  background: white;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.activity.even {
+  background-color: #cfe9ff;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}
+
+.activity.odd {
+  background-color: #cfdeff;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 5px;
+}

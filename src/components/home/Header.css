@@ -1,0 +1,115 @@
+.app-header {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 10px 50px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  max-height: 50px;
+  margin-right: 20px;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.nav-item {
+  margin: 0 20px;
+  cursor: pointer;
+  position: relative;
+}
+
+.for-schools .dropdown {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+  top: 100%;
+  left: 0;
+}
+
+.for-schools:hover .dropdown {
+  display: block;
+}
+
+.dropdown a {
+  display: block;
+  padding: 10px 20px;
+  color: black;
+  transition: background-color 0.3s; /* Added transition */
+  text-decoration: none; /* Added to remove underlines from links */
+}
+
+.dropdown a:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Background color on hover */
+}
+
+.auth-buttons {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.button1,
+.button2 {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.button1 {
+  background: #9b59b6;
+  margin-right: -20px;
+}
+
+.button1:hover {
+  background: #8e44ad;
+}
+
+.button2 {
+  background: #674172;
+}
+
+.button2:hover {
+  background: #512c58;
+}
+
+.button1,
+.button2 {
+  display: inline-block;
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: none;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}

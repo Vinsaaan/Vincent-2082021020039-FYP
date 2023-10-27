@@ -1,0 +1,81 @@
+body,
+html {
+  margin: 0;
+  height: 100%;
+}
+
+.login-page {
+  background-color: #2c3863;
+  min-height: 100vh;
+  color: rgb(0, 0, 0);
+}
+
+.login-container {
+  max-width: 800px;
+  margin: 80px auto;
+  display: flex;
+  background-color: transparent;
+}
+
+.welcome-message {
+  text-align: center;
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.login-form {
+  flex: 1;
+  padding: 20px;
+  background-color: #f3f3f3;
+  border-radius: 8px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+}
+
+.login-photo {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+}
+
+.login-photo img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.forgot-password {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.forgot-password a {
+  color: rgb(55, 142, 255);
+  font-size: 14px;
+}
+
+.login-link {
+  color: rgb(0, 0, 0);
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.login-link a {
+  color: rgb(55, 142, 255);
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.login-link a {
+  color: rgb(55, 142, 255);
+  text-align: center;
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.error-message {
+  color: red;
+}

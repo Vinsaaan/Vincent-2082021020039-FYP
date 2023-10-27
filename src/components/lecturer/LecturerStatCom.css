@@ -1,0 +1,15 @@
+.dashboard-overview {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.total-students,
+.ongoing-quizzes,
+.completed-quizzes {
+  flex: 1;
+  padding: 20px;
+  text-align: center;
+  margin: 0 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

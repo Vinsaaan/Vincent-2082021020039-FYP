@@ -1,0 +1,48 @@
+.score-page {
+  text-align: center;
+  max-width: 800px;
+  margin: auto;
+  margin-top: 50px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.score-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.score-table,
+.score-table th,
+.score-table td {
+  border: 1px solid black;
+}
+
+.score-table th,
+.score-table td {
+  padding: 10px;
+  text-align: center;
+}
+
+.score-table th {
+  background-color: #ffd4fa;
+}
+
+.score-table td:nth-child(3) {
+  color: black;
+}
+
+tr.even {
+  background-color: #cfe9ff;
+}
+
+tr.odd {
+  background-color: #cfdeff;
+}
+
+.score-table th {
+  cursor: pointer;
+}

@@ -1,0 +1,102 @@
+.decision-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+  max-width: 500px; /* Optional, limit the modal width */
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow for depth */
+}
+
+/* Shared styles for buttons */
+.button-common {
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 15px;
+  transition: background-color 0.2s ease;
+  color: white;
+}
+
+/* Approve option */
+.interview-yes-button,
+.interview-no-button,
+.yes-button,
+.no-button {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.interview-yes-button {
+  background-color: green;
+}
+
+.interview-no-button {
+  background-color: red;
+}
+
+/* Decline option */
+.yes-button {
+  background-color: red;
+}
+
+.no-button {
+  background-color: gray;
+}
+
+/* Hover effects */
+.interview-yes-button:hover {
+  background-color: darkgreen;
+}
+
+.interview-no-button:hover,
+.yes-button:hover {
+  background-color: darkred;
+}
+
+.no-button:hover {
+  background-color: darkgray;
+}
+
+.schedule-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.schedule-item input[type="date"],
+.schedule-item input[type="time"] {
+  flex: 1;
+  margin-right: 5px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.schedule-button-delete,
+.schedule-button-add {
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  margin-right: 10px;
+  margin-left: 10px;
+  transition: transform 0.2s ease; /* Added for subtle scaling effect on hover */
+}
+
+.schedule-button-delete:hover,
+.schedule-button-add:hover {
+  transform: scale(1.1); /* Slightly scale icons on hover for feedback */
+}

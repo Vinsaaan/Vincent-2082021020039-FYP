@@ -1,0 +1,173 @@
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #2c3863;
+  min-height: 100vh;
+}
+
+.header-container {
+  width: 100%;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.main-content {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.content-container {
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+}
+
+.image-caption {
+  font-size: 60px;
+  margin-left: 300px;
+  margin-top: 0px;
+  margin-bottom: 80px;
+  color: white;
+}
+
+.photo-slide {
+  max-width: 100%;
+  max-height: 100px;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+  margin-left: 25px;
+  margin-top: -60px;
+}
+
+.photo-slide.fade-out {
+  opacity: 0;
+}
+
+.photo-container {
+  width: 90%;
+  flex-shrink: 0;
+}
+
+.photo {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.arrow.left {
+  cursor: pointer;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.arrow.right img {
+  margin-top: 210px;
+  position: absolute;
+  right: 350px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.arrow.left img {
+  margin-top: -20px;
+  position: absolute;
+  right: 350px;
+  top: 65%;
+  transform: translateY(-50%);
+}
+
+.arrow.left img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.arrow.right img {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+}
+
+.student-description-container.photo-0 {
+  position: absolute;
+  font-size: 30px;
+  right: 50%;
+  font-weight: bold;
+  top: 37%;
+  transform: translate(340%);
+  flex-shrink: 0;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.student-description-container.photo-1 {
+  position: absolute;
+  font-size: 30px;
+  right: 50%;
+  font-weight: bold;
+  top: 42%;
+  transform: translate(303%);
+  flex-shrink: 0;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.student-description-container.photo-2 {
+  position: absolute;
+  font-size: 30px;
+  right: 50%;
+  font-weight: bold;
+  top: 42%;
+  transform: translate(260%);
+  flex-shrink: 0;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.student-description-container.photo-3 {
+  position: absolute;
+  font-size: 30px;
+  right: 50%;
+  font-weight: bold;
+  top: 37%;
+  transform: translate(270%);
+  flex-shrink: 0;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.student-description-container.photo-4 {
+  position: absolute;
+  font-size: 30px;
+  right: 50%;
+  font-weight: bold;
+  top: 42%;
+  transform: translate(220%);
+  flex-shrink: 0;
+  color: white;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo2 {
+  position: absolute;
+  margin-left: 0px;
+  transform: translate(590%);
+  top: 59%;
+  width: 210px;
+  height: 210px;
+}

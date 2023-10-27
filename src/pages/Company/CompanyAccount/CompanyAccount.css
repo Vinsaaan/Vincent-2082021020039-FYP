@@ -1,0 +1,135 @@
+body.company-account-background {
+  background-color: #fafafa;
+}
+
+.company-account {
+  max-width: 800px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+.company-account .content {
+  display: flex;
+  flex-direction: column;
+}
+
+.company-account .content h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.content .profile-pic input[type="file"] {
+  display: block;
+  margin: 10px auto;
+  text-align: center;
+}
+
+.content .user-data {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.content .profile-pic {
+  flex: 0;
+  border: 2px solid #ccc;
+  padding: 10px;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.content .profile-pic img {
+  max-width: 150px;
+  border-radius: 50%;
+  display: block;
+  margin: auto;
+}
+
+.content .profile-pic input[type="file"] {
+  display: block;
+  margin: auto;
+}
+
+.content .user-data {
+  flex: 1;
+  padding-left: 20px;
+}
+
+.input-group {
+  margin-bottom: 40px;
+}
+
+.input-group div {
+  margin-bottom: 5px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.input-group input,
+.input-group select {
+  display: block;
+  width: 50%;
+  max-width: 200px;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.input-group.gender select {
+  max-width: 150px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #9b59b6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+button:hover {
+  background-color: #8023a5;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+}
+
+.edit-link {
+  color: #0047ab;
+  text-decoration: underline;
+  font-size: 0.8em;
+  cursor: pointer;
+  margin-left: 15px;
+}
+
+.data-box {
+  display: inline-block;
+  border: none;
+  padding: 5px;
+  margin-right: 10px;
+  background-color: rgba(255, 224, 248, 0.2);
+  border-radius: 10px;
+}
+
+.buttons-group {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.buttons-group button {
+  margin-bottom: 0;
+}
+
+.edit-link-password {
+  margin-left: 0px;
+}

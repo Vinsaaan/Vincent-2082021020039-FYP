@@ -1,0 +1,99 @@
+#studentQuizRoom {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+#quizSubject {
+  margin: 0;
+}
+
+#timeLeft {
+  color: red;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+#lecturerName,
+#quizCode {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+#questionSection {
+  margin-top: 20px;
+}
+
+#questionSection .option {
+  margin-bottom: 10px;
+  cursor: pointer;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+#questionSection .option:hover {
+  background-color: #eee;
+}
+
+#questionSection .question {
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#questionSection .question:nth-child(odd) {
+  background-color: #e0f7fa;
+}
+
+#questionSection .question:nth-child(even) {
+  background-color: #e8f5e9;
+}
+
+#navigationButtons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#submitButton {
+  margin-left: auto;
+  display: block;
+  background-color: #ff5722; /* Updated background color for differentiation */
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #0288d1;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #01579b;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+#scoreDisplay {
+  margin-top: 20px;
+  font-size: 24px;
+  color: green;
+}

@@ -1,0 +1,82 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background: #add8e6;
+  padding: 20px;
+  transition: left 0.3s ease-in-out;
+  z-index: 1000;
+  border-right: 4px solid rgb(0, 0, 0);
+}
+
+.sidebar .lecturerlogo {
+  width: 130px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 40px;
+}
+
+.sidebar.locked,
+.sidebar:hover {
+  left: 0;
+}
+
+.sidebar ul {
+  padding-top: 50px;
+}
+
+.sidebar li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.sidebar ul li a {
+  font-size: 18px;
+}
+
+.sidebar img {
+  width: 40px;
+  height: auto;
+  margin-right: 15px;
+}
+
+.sidebar a {
+  margin-left: -15px;
+}
+
+.sidebar a,
+.sign-out {
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+}
+
+.sign-out {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 18px;
+}
+
+.arrow-icon,
+.lock-icon {
+  position: absolute;
+  top: 50%;
+  right: -43px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+div.sidebar .arrow-icon img,
+div.sidebar .lock-icon img {
+  width: 50px;
+  height: 50px;
+}

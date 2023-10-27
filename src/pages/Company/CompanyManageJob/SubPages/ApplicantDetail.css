@@ -1,0 +1,187 @@
+.applicant-details-container {
+  width: 800px;
+  margin: 0 auto;
+  background: #fafafa;
+  box-sizing: border-box;
+  padding: 20px;
+}
+
+.applicant-details-container * {
+  background: white;
+}
+
+.applicant-details {
+  margin: 0 auto;
+  max-width: 570px;
+  width: 100%;
+  background: white;
+  padding: 40px;
+}
+
+.applicant-input-flex {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+
+.applicant-input {
+  width: 100%;
+  padding: 13px 22px;
+  border-radius: 5px;
+  border: 1px solid #dde3ec;
+  background: #ffffff;
+  font-weight: 500;
+  font-size: 16px;
+  color: #536387;
+  outline: none;
+  resize: none;
+  background: #fafafa;
+  border-color: #fafafa;
+}
+
+.applicant-input::placeholder {
+  color: #c7cbd4;
+}
+
+.applicant-form-label {
+  color: #07074d;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.applicant-details h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.applicant-detail-phone-inputs {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.applicant-error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.applicant-view-resume-button {
+  text-align: center;
+  width: 100%;
+  font-size: 16px;
+  border-radius: 5px;
+  padding: 14px 25px;
+  border: none;
+  font-weight: 500;
+  background-color: #6a64f1;
+  color: white;
+  cursor: pointer;
+  margin-top: 25px;
+  display: block;
+  margin: 0 auto;
+  transition: background-color 0.3s ease;
+}
+
+.applicant-view-resume-button:hover {
+  background-color: #463ed2;
+}
+
+.applicant-detail-last-name,
+.applicant-detail-first-name {
+  margin-top: 20px;
+}
+
+.applicant-detail-email input,
+.applicant-detail-first-name input,
+.applicant-detail-last-name input {
+  width: 230px;
+  padding: 15px 22px;
+  font-size: 16px;
+}
+
+.applicant-detail-gender .form-input {
+  width: 215px;
+  font-size: 16px;
+}
+
+#applicant-areacode {
+  width: 50px;
+  padding: 15px 22px;
+  font-size: 16px;
+}
+
+#applicant-phone {
+  width: 520px;
+  padding: 15px 22px;
+  font-size: 16px;
+}
+
+.applicant-detail-country,
+.applicant-detail-state,
+.applicant-detail-city,
+.applicant-detail-address,
+.applicant-detail-start-date {
+  margin-top: 20px;
+}
+
+.applicant-detail-address {
+  margin-bottom: 20px;
+}
+
+.applicant-detail-start-date input,
+.applicant-detail-country input,
+.applicant-detail-state input,
+.applicant-detail-city input {
+  width: 93%;
+  padding: 15px 22px;
+  font-size: 16px;
+}
+.applicant-detail-cover-letter input {
+  width: 50%;
+}
+
+.applicant-detail-cover-letter .form-input {
+  width: 95%;
+  padding: 15px 22px;
+  font-size: 16px;
+}
+
+.applicant-proceed-button {
+  width: 150px;
+  margin-top: 20px;
+  margin-left: 85px;
+  padding: 13px;
+  font-size: 16px;
+  background-color: #6a64f1;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.applicant-decline-button {
+  width: 150px;
+  margin-top: 20px;
+  margin-left: 85px;
+  padding: 13px;
+  font-size: 16px;
+  background-color: #f16464;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.applicant-proceed-button:hover {
+  background-color: #463ed2;
+}
+
+.applicant-decline-button:hover {
+  background-color: #d23e3e;
+}

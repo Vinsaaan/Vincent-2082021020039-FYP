@@ -1,0 +1,112 @@
+body.company-view-student-background {
+  background-color: #fafafa;
+}
+
+.company-view-student .content {
+  max-width: 1100px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  margin-left: 350px;
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.spacing {
+  margin-top: 50px;
+}
+
+.students-list {
+  width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.table-header {
+  background-color: #ffd4fa;
+  display: flex;
+  padding: 10px;
+  font-weight: bold;
+  justify-content: center;
+  align-items: center;
+}
+
+.student-item {
+  display: flex;
+  padding: 10px;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+}
+
+.student-item:hover {
+  background-color: #e6f7ff !important;
+}
+
+.student-item.even {
+  background-color: #cfe9ff;
+}
+
+.student-item.odd {
+  background-color: #cfdeff;
+}
+
+.table-header div,
+.student-item div {
+  text-align: center;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.table-header div:nth-child(1),
+.student-item div:nth-child(1) {
+  flex: 0.2;
+}
+
+.table-header div:nth-child(2),
+.student-item div:nth-child(2) {
+  flex: 1;
+}
+
+.table-header div:nth-child(3),
+.student-item div:nth-child(3) {
+  flex: 0.5;
+}
+
+.table-header div:nth-child(4),
+.student-item div:nth-child(4) {
+  flex: 0.8;
+}
+
+.table-header div:nth-child(5),
+.student-item div:nth-child(5) {
+  flex: 1;
+}
+
+.table-header div:nth-child(6),
+.student-item div:nth-child(6) {
+  flex: 1;
+}
+
+.grades {
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-top: 1px solid #ccc;
+  text-align: left;
+}
+
+.student-item div,
+.table-header div {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
