@@ -3,26 +3,17 @@ import firebase from "../../../firebase/firebase";
 import LecturerSidebar from "../../../components/lecturer/LecturerSidebar";
 import LecturerStatCom from "../../../components/lecturer/LecturerStatCom";
 import "./LecturerViewStudent.css";
+import { useNavigate } from "react-router-dom";
 
 const LecturerViewStudent = () => {
-  useEffect(() => {
-    document.title = "Student List";
-
-    return () => {
-      document.title = "EduBridge";
-    };
-  }, []);
+  const navigate = useNavigate();
   const [students, setStudents] = useState([]);
   const [selectedStudent, setSelectedStudent] = useState(null);
 
   useEffect(() => {
+    document.title = "Student List";
     document.body.classList.add("lecturer-view-student-background");
-    return () => {
-      document.body.classList.remove("lecturer-view-student-background");
-    };
-  }, []);
 
-  useEffect(() => {
     const fetchStudents = async () => {
       try {
         const db = firebase.firestore();
@@ -53,6 +44,11 @@ const LecturerViewStudent = () => {
               const student = studentData.data();
 
               const totalQuestions = quiz.data().questions.length;
+              const commentRef = db
+                .collection("comments")
+                .doc(`${user.uid}_${studentId}`);
+              const commentSnap = await commentRef.get();
+              const hasComment = commentSnap.exists;
 
               const existingStudent = studentsArray.find(
                 (s) => s.id === studentId
@@ -62,6 +58,7 @@ const LecturerViewStudent = () => {
                 studentsArray.push({
                   ...student,
                   id: studentId,
+                  hasComment: hasComment,
                   courses: [
                     {
                       quizCode,
@@ -76,6 +73,7 @@ const LecturerViewStudent = () => {
                   name: quiz.data().subject,
                   score: `${doc.data().score}/${totalQuestions}`,
                 });
+                existingStudent.hasComment = hasComment;
               }
             }
           }
@@ -88,7 +86,22 @@ const LecturerViewStudent = () => {
     };
 
     fetchStudents();
+
+    return () => {
+      document.title = "EduBridge";
+      document.body.classList.remove("lecturer-view-student-background");
+    };
   }, []);
+
+  const handleRowClick = (studentId) => {
+    setSelectedStudent((prevSelected) =>
+      prevSelected === studentId ? null : studentId
+    );
+  };
+
+  const handleAddOrUpdateComment = (studentId, hasComment) => {
+    navigate(`/comment-student/${studentId}`);
+  };
 
   return (
     <div className="lecturer-view-student">
@@ -102,30 +115,41 @@ const LecturerViewStudent = () => {
             <div>No.</div>
             <div>Name</div>
             <div>
-              Student <br /> Answered
-            </div>{" "}
-            {/* Modified Column */}
+              Student
+              <br />
+              Answered
+            </div>
             <div>Email</div>
             <div>Phone</div>
+            <div>Action</div>
           </div>
           {students.map((student, index) => (
-            <>
+            <React.Fragment key={student.id}>
               <div
-                key={student.id}
                 className={`student-item ${index % 2 === 0 ? "even" : "odd"}`}
-                onClick={() =>
-                  setSelectedStudent(
-                    student.id === selectedStudent ? null : student.id
-                  )
-                }
+                onClick={() => handleRowClick(student.id)}
               >
                 <div>{index + 1}</div>
                 <div>
                   {student.firstName} {student.lastName}
                 </div>
-                <div>{student.courses.length}</div> {/* Updated Data */}
+                <div>{student.courses.length}</div>
                 <div>{student.email}</div>
                 <div>{student.phoneNumber}</div>
+                <div>
+                  {selectedStudent === student.id && (
+                    <button
+                      className={
+                        student.hasComment ? "update-comment" : "write-comment"
+                      }
+                      onClick={() =>
+                        handleAddOrUpdateComment(student.id, student.hasComment)
+                      }
+                    >
+                      {student.hasComment ? "Update Comment" : "Write Comment"}
+                    </button>
+                  )}
+                </div>
               </div>
 
               {selectedStudent === student.id && student.courses && (
@@ -137,7 +161,7 @@ const LecturerViewStudent = () => {
                   ))}
                 </div>
               )}
-            </>
+            </React.Fragment>
           ))}
         </div>
       </div>

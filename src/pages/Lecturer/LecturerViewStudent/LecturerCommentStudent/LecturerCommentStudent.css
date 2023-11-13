@@ -1,0 +1,94 @@
+.comment-container {
+  transform: translateY(50px);
+  margin-top: 60px;
+  width: 800px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.comment-section,
+.skills-section,
+.submit-section {
+  margin-bottom: 20px;
+}
+
+.comment-field {
+  width: 97%;
+  height: 80px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: none;
+}
+
+.new-skill-field {
+  padding: 5px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.skill-rating {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.new-skill {
+  width: 18%;
+  display: flex;
+  align-items: center;
+}
+
+.skill-rating .error-message {
+  margin-left: 10px;
+}
+
+.new-skill-with-message .error-message {
+  margin-top: 10px;
+}
+
+.submit-section {
+  text-align: right;
+}
+
+.comment-add-skill {
+  padding: 5px 10px;
+  margin-left: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #af48cb;
+  color: white;
+}
+
+.comment-add-skill:hover {
+  background-color: rgb(122, 31, 141);
+}
+
+.new-skill {
+  display: flex;
+  align-items: center;
+}
+
+.input-with-error {
+  flex-grow: 1;
+  margin-right: 8px;
+}
+
+.clickable-icon {
+  cursor: pointer;
+  margin-left: 15px;
+  width: 28px;
+  height: auto;
+}
+
+.submit-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}

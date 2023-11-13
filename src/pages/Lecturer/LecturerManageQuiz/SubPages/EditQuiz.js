@@ -131,7 +131,7 @@ const EditQuiz = () => {
         await saveActivityLog(message);
 
         alert("Quiz updated successfully!");
-        navigate("/lecturermanagequiz");
+        navigate("/manage-quiz");
       } catch (error) {
         console.error("Error updating quiz: ", error);
         alert("Failed to update the quiz. Please try again.");
@@ -167,7 +167,6 @@ const EditQuiz = () => {
 
       {questions.map((q, qIndex) => (
         <div key={qIndex} className="question">
-          {/* ... Other question components ... */}
           <button
             className="delete-question"
             onClick={() => deleteQuestion(qIndex)}

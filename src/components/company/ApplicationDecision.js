@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import firebase from "../../firebase/firebase";
 import addIcon from "../../assets/images/company/schedule/addIcon.png";
 import delIcon from "../../assets/images/company/schedule/delIcon.png";
@@ -16,18 +16,43 @@ const ApplicationDecision = ({
   const [schedules, setSchedules] = useState([{ date: "", time: "" }]);
   const db = firebase.firestore();
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // Set up the auth state changed listener
+    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+      setUser(user);
+    });
+
+    // Clean up the listener when the component unmounts
+    return () => unsubscribe();
+  }, []);
 
   if (!show) {
     return null;
   }
 
   const validateSchedules = () => {
-    for (let schedule of schedules) {
-      if (!schedule.date.trim() || !schedule.time.trim()) {
-        return false;
-      }
+    return schedules.every(
+      (schedule) => schedule.date.trim() && schedule.time.trim()
+    );
+  };
+
+  const addOrUpdateInterview = async (interviewData) => {
+    if (!user) {
+      alert("Please sign in first.");
+      return;
     }
-    return true;
+
+    try {
+      const interviewDoc = await db.collection("interviews").add(interviewData);
+      console.log(`Interview added with ID: ${interviewDoc.id}`);
+      onConfirm();
+      navigate("/manage-job");
+    } catch (error) {
+      console.error("Error adding interview: ", error);
+      alert("Failed to add interview. Please try again.");
+    }
   };
 
   const handleAddSchedule = () => {
@@ -37,63 +62,37 @@ const ApplicationDecision = ({
   };
 
   const handleSaveSchedules = () => {
-    firebase.auth().onAuthStateChanged(async (user) => {
-      if (user) {
-        if (!validateSchedules()) {
-          alert("Please fill in all date and time fields!");
-          return;
-        }
-
-        try {
-          const interviewDoc = await db.collection("interviews").add({
-            jobId,
-            schedules,
-            applicationId,
-            interviewStatus: "Scheduled",
-          });
-          console.log(`Interview added with ID: ${interviewDoc.id}`);
-
-          onConfirm();
-          navigate("/manage-job");
-        } catch (error) {
-          console.error("Error adding interview schedules: ", error);
-          alert("Failed to add interview schedules. Please try again.");
-        }
-      } else {
-        alert("Please sign in first.");
-      }
+    if (!validateSchedules()) {
+      alert("Please fill in all date and time fields!");
+      return;
+    }
+    addOrUpdateInterview({
+      jobId,
+      schedules,
+      applicationId,
+      interviewStatus: "Scheduled",
     });
   };
 
   const handleRejectApplicant = () => {
-    firebase.auth().onAuthStateChanged(async (user) => {
-      if (user) {
-        try {
-          const interviewDoc = await db.collection("interviews").add({
-            jobId,
-            applicationId,
-            interviewStatus: "Rejected",
-          });
-          console.log(`Interview rejection added with ID: ${interviewDoc.id}`);
-
-          onConfirm();
-          navigate("/manage-job");
-        } catch (error) {
-          console.error("Error rejecting applicant: ", error);
-          alert("Failed to reject. Please try again.");
-        }
-      } else {
-        alert("Please sign in first.");
-      }
+    addOrUpdateInterview({
+      jobId,
+      applicationId,
+      interviewStatus: "Rejected",
     });
   };
 
   const handleRemoveSchedule = () => {
     if (schedules.length > 1) {
-      const newSchedules = [...schedules];
-      newSchedules.pop();
-      setSchedules(newSchedules);
+      setSchedules(schedules.slice(0, -1));
     }
+  };
+
+  const handleScheduleChange = (index, field, value) => {
+    const updatedSchedules = schedules.map((schedule, i) =>
+      i === index ? { ...schedule, [field]: value } : schedule
+    );
+    setSchedules(updatedSchedules);
   };
 
   return (
@@ -107,20 +106,16 @@ const ApplicationDecision = ({
                 <input
                   type="date"
                   value={schedule.date}
-                  onChange={(e) => {
-                    const newSchedules = [...schedules];
-                    newSchedules[index].date = e.target.value;
-                    setSchedules(newSchedules);
-                  }}
+                  onChange={(e) =>
+                    handleScheduleChange(index, "date", e.target.value)
+                  }
                 />
                 <input
                   type="time"
                   value={schedule.time}
-                  onChange={(e) => {
-                    const newSchedules = [...schedules];
-                    newSchedules[index].time = e.target.value;
-                    setSchedules(newSchedules);
-                  }}
+                  onChange={(e) =>
+                    handleScheduleChange(index, "time", e.target.value)
+                  }
                 />
               </div>
             ))}
@@ -140,7 +135,6 @@ const ApplicationDecision = ({
               Are you sure you want to{" "}
               <span className="proceed-text">PROCEED</span> the applicant?
             </p>
-
             <button
               className="interview-yes-button"
               onClick={handleSaveSchedules}

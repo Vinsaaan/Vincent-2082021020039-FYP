@@ -20,7 +20,7 @@ const StudentQuizRoom = () => {
     document.title = "Quiz Room";
 
     return () => {
-      document.title = "Original Tab Title";
+      document.title = "Edu Bridge";
     };
   }, []);
 
@@ -73,20 +73,39 @@ const StudentQuizRoom = () => {
   };
 
   const handleSubmit = useCallback(
-    async (forced = false) => {
-      if (!forced && !window.confirm("Do you want to submit your answers?")) {
+    async () => {
+      if (submitted) {
+        console.log("Quiz already submitted.");
         return;
       }
 
-      let correctAnswers = 0;
-      quiz.questions.forEach((question, index) => {
-        if (selectedOptions[index] === question.correctOption) {
-          correctAnswers++;
-        }
-      });
+      const unansweredQuestions = selectedOptions
+        .map((answer, index) => (answer === null ? index + 1 : null))
+        .filter((number) => number !== null);
+
+      if (unansweredQuestions.length > 0) {
+        alert(
+          `You have not answered the following questions: ${unansweredQuestions.join(
+            ", "
+          )}. Please answer all questions before submitting.`
+        );
+        return;
+      }
+
+      if (!window.confirm("Are you sure you want to submit your answers?")) {
+        return;
+      }
+
+      // Calculate the score
+      let correctAnswers = quiz.questions.reduce(
+        (total, question, index) =>
+          total + (selectedOptions[index] === question.correctOption ? 1 : 0),
+        0
+      );
 
       setScore(correctAnswers);
       setSubmitted(true);
+
       alert(`Your score: ${correctAnswers}/${quiz.questions.length}`);
       recordActivity(
         `Submitted quiz with code ${quizCode}. Score: ${correctAnswers}/${quiz.questions.length}`
@@ -112,9 +131,11 @@ const StudentQuizRoom = () => {
         console.error("User is not authenticated");
       }
     },
+    // Add any other dependencies if they are used in the handleSubmit scope
     [
       quiz,
       selectedOptions,
+      submitted,
       navigate,
       quizCode,
       studentFirstName,
@@ -137,6 +158,8 @@ const StudentQuizRoom = () => {
           quizData.id = doc.id;
           setQuiz(quizData);
           setTimeLeft(quizData.duration * 60);
+
+          // Initialize selectedOptions with null for each question
           setSelectedOptions(new Array(quizData.questions.length).fill(null));
         } else {
           console.log("No such document!");
@@ -203,33 +226,48 @@ const StudentQuizRoom = () => {
       <div id="quizCode">Code: {quizCode}</div>
       <div className="question-section" id="questionSection">
         {questionsToDisplay.map((question, index) => {
-          const questionIndex = currentPage * 5 + index;
+          const questionNumber = currentPage * 5 + index + 1; // Calculate the question number
 
           return (
             <div
-              key={questionIndex}
+              key={questionNumber}
               className={`question ${index % 2 === 0 ? "even" : "odd"}`}
-              id={`question${questionIndex}`}
+              id={`question${questionNumber}`}
             >
-              <h2 id={`questionText${questionIndex}`}>{question.question}</h2>
-              <div className="options" id={`options${questionIndex}`}>
+              {/* Display the question number above the question */}
+              <div
+                className="question-number"
+                id={`questionNumber${questionNumber}`}
+              >
+                Question {questionNumber}
+              </div>
+              <h2 id={`questionText${questionNumber}`}>{question.question}</h2>
+              <div className="options" id={`options${questionNumber}`}>
                 {question.options.map((option, optionIndex) => (
                   <div
                     key={optionIndex}
-                    className="option"
-                    id={`option${optionIndex}ForQuestion${questionIndex}`}
+                    className={`option ${
+                      selectedOptions[questionNumber - 1] === optionIndex
+                        ? "selected"
+                        : ""
+                    }`}
+                    id={`option${optionIndex}ForQuestion${questionNumber}`}
                     onClick={() =>
-                      handleOptionSelect(questionIndex, optionIndex)
+                      handleOptionSelect(questionNumber - 1, optionIndex)
                     }
                   >
                     <input
                       type="radio"
-                      id={`optionInput${optionIndex}ForQuestion${questionIndex}`}
-                      checked={selectedOptions[questionIndex] === optionIndex}
+                      name={`question${questionNumber}`}
+                      id={`optionInput${optionIndex}ForQuestion${questionNumber}`}
+                      checked={
+                        selectedOptions[questionNumber - 1] === optionIndex
+                      }
+                      onChange={() => {}}
                       readOnly
                     />
                     <label
-                      htmlFor={`optionInput${optionIndex}ForQuestion${questionIndex}`}
+                      htmlFor={`optionInput${optionIndex}ForQuestion${questionNumber}`}
                     >
                       {option}
                     </label>

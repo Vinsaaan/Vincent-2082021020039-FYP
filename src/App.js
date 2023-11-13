@@ -8,6 +8,8 @@ import CompanyOverview from "../src/pages/Overview/CompanyOverview";
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
+import Feedback from "./pages/Report/Feedback/Feedback";
+import ReportBug from "./pages/Report/ReportBug/ReportBug";
 
 import LecturerDashboard from "./pages/Lecturer/LecturerDashboard/LecturerDashboard";
 import LecturerViewStudent from "./pages/Lecturer/LecturerViewStudent/LecturerViewStudent";
@@ -17,6 +19,7 @@ import LecturerCreateQuiz from "./pages/Lecturer/LecturerManageQuiz/SubPages/Cre
 import LecturerEditQuiz from "./pages/Lecturer/LecturerManageQuiz/SubPages/EditQuiz";
 import LecturerViewScore from "./pages/Lecturer/LecturerManageQuiz/SubPages/ViewScore";
 import LecturerViewAnswer from "./pages/Lecturer/LecturerManageQuiz/SubPages/ViewAnswer/ViewAnswer";
+import LecturerCommentStudent from "./pages/Lecturer/LecturerViewStudent/LecturerCommentStudent/LecturerCommentStudent";
 
 import StudentDashboard from "./pages/Student/StudentDashboard/StudentDashboard";
 import StudentAccount from "./pages/Student/StudentAccount/StudentAccount";
@@ -34,6 +37,8 @@ import CompanyCreateJob from "./pages/Company/CompanyManageJob/SubPages/CreateJo
 import CompanyEditJob from "./pages/Company/CompanyManageJob/SubPages/EditJob";
 import CompanyViewJob from "./pages/Company/CompanyManageJob/SubPages/ViewJob";
 import ApplicantDetail from "./pages/Company/CompanyManageJob/SubPages/ApplicantDetail";
+import InterviewRoom from "./pages/Company/CompanyManageJob/SubPages/InterviewRoom/InterviewRoom";
+import CompanyViewFeedback from "./pages/Company/CompanyManageJob/SubPages/CompanyViewFeedback";
 
 function App() {
   return (
@@ -47,6 +52,8 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/forgot-password" element={<ResetPassword />} />
+        <Route path="/feedback" element={<Feedback />} />
+        <Route path="/report-bug" element={<ReportBug />} />
 
         {/*Lecturer*/}
         <Route path="/lecturer-dashboard" element={<LecturerDashboard />} />
@@ -60,6 +67,10 @@ function App() {
         <Route
           path="/view-answer/:quizId/:studentId"
           element={<LecturerViewAnswer />}
+        />
+        <Route
+          path="/comment-student/:studentId"
+          element={<LecturerCommentStudent />}
         />
 
         {/*Student*/}
@@ -82,6 +93,14 @@ function App() {
         <Route
           path="/applicant-detail/:applicationId"
           element={<ApplicantDetail />}
+        />
+        <Route
+          path="/interview-room/:interviewRoomId"
+          element={<InterviewRoom />}
+        />
+        <Route
+          path="/view-feedback/:applicationId/:studentId"
+          element={<CompanyViewFeedback />}
         />
       </Routes>
     </Router>

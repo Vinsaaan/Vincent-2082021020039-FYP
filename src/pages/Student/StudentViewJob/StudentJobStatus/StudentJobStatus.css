@@ -33,10 +33,12 @@
 
 tr.even {
   background-color: #cfe9ff;
+  cursor: pointer;
 }
 
 tr.odd {
   background-color: #cfdeff;
+  cursor: pointer;
 }
 
 .applications-table th {
@@ -68,4 +70,35 @@ tr.odd {
 
 .interview-schedule-row {
   background-color: white;
+}
+
+.interview-time-row:nth-child(odd) {
+  background-color: #eff7ff;
+}
+
+.interview-time-row:nth-child(even) {
+  background-color: #ecf2ff;
+}
+
+.interview-time-center span b {
+  color: blue;
+}
+
+.tr.even .interview-time-center span b,
+.tr.odd .interview-time-center span b {
+  color: blue;
+}
+
+.join-interview {
+  color: green;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.confirm-interview-button {
+  background-color: green;
+}
+
+.confirm-interview-button:hover {
+  background-color: rgb(3, 105, 3);
 }

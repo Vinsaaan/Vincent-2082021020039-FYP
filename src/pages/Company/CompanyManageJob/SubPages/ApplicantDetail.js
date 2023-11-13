@@ -19,6 +19,16 @@ const ApplicantDetail = () => {
   const [showDecisionModal, setShowDecisionModal] = useState(false);
   const [decisionType, setDecisionType] = useState(null);
 
+  const handleViewFeedback = () => {
+    const studentId = applicantData?.studentId;
+    if (studentId) {
+      const feedbackUrl = `/view-feedback/${applicationId}/${studentId}`;
+      window.open(window.location.origin + feedbackUrl, "_blank");
+    } else {
+      console.error("No student ID found for this application");
+    }
+  };
+
   useEffect(() => {
     const fetchApplicantData = async () => {
       try {
@@ -69,13 +79,19 @@ const ApplicantDetail = () => {
       <div className="applicant-details">
         <h2>Applicant Details</h2>
 
-        <div className="applicant-file-flex">
-          <label htmlFor="resumeURL" className="form-label"></label>
+        <div className="applicant-button-group">
           <button
             className="applicant-view-resume-button"
             onClick={() => window.open(applicantData.resumeURL, "_blank")}
           >
             View Resume
+          </button>
+
+          <button
+            className="applicant-view-feedback-button"
+            onClick={handleViewFeedback}
+          >
+            View Feedback
           </button>
         </div>
 

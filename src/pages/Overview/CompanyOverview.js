@@ -38,18 +38,18 @@ const descriptions = [
 const CompanyOverview = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [fade, setFade] = useState(false);
+  const [isPaused, setIsPaused] = useState(false); // Add isPaused state
 
-  const timerRef = useRef(null); // Reference to the timer
+  const timerRef = useRef(null);
 
-  // Function to start the slideshow timer
   const startSlideshowTimer = () => {
-    // Clear any existing timer
     clearTimeout(timerRef.current);
 
-    // Start a new timer to advance to the next slide after 3 seconds
     timerRef.current = setTimeout(() => {
-      handleNext();
-    }, 3000); // Adjust the timing (3 seconds) as needed
+      if (!isPaused) {
+        handleNext();
+      }
+    }, 3000);
   };
 
   const handleNext = () => {
@@ -60,11 +60,9 @@ const CompanyOverview = () => {
         setFade(false);
       }, 500);
     } else {
-      // Wrap back to the first slide when reaching the end
       setCurrentIndex(0);
     }
 
-    // Start the slideshow timer after advancing to the next slide
     startSlideshowTimer();
   };
 
@@ -76,26 +74,26 @@ const CompanyOverview = () => {
         setFade(false);
       }, 500);
     } else {
-      // Wrap to the last slide when at the beginning
       setCurrentIndex(photos.length - 1);
     }
 
-    // Start the slideshow timer after going back to the previous slide
     startSlideshowTimer();
   };
 
   useEffect(() => {
     document.title = "Company Overview";
 
-    // Start the initial slideshow timer when the component mounts
     startSlideshowTimer();
 
     return () => {
       document.title = "EduBridge";
-      // Clear the timer when the component unmounts
       clearTimeout(timerRef.current);
     };
   });
+
+  const handleImageClick = () => {
+    setIsPaused(!isPaused); // Toggle the pause state
+  };
 
   return (
     <div className="landing-page">
@@ -104,9 +102,12 @@ const CompanyOverview = () => {
       </div>
       <div className="main-content">
         <div className="content-container">
-          <div className="photo-container">
+          <div className="photo-container" onClick={handleImageClick}>
             <h1 className="image-caption">Company Overview</h1>{" "}
-            <div className={`photo-slide ${fade ? "fade-out" : ""}`}>
+            <div
+              className={`photo-slide ${fade ? "fade-out" : ""}`}
+              onClick={handleImageClick}
+            >
               <div className="click-zone left" onClick={handlePrevious}></div>
               <img
                 src={photos[currentIndex]}

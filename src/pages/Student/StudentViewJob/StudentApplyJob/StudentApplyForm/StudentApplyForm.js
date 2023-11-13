@@ -119,7 +119,18 @@ function StudentApplyForm() {
       city: formFields.city,
       address: formFields.address,
       coverLetter: formFields.coverLetter,
+      studentId: null, // Initialize it as null for now
     };
+
+    // Fetch the current user's UID
+    const studentId = firebase.auth().currentUser
+      ? firebase.auth().currentUser.uid
+      : null;
+
+    if (studentId) {
+      // Add user UID to the application data
+      newApplication.studentId = studentId;
+    }
 
     const docRef = await applicationsRef.add(newApplication);
 

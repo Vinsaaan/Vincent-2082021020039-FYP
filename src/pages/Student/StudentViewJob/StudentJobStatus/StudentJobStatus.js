@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react";
 import firebase from "../../../../firebase/firebase";
 import StudentHeader from "../../../../components/student/StudentHeader";
 import "./StudentJobStatus.css";
+import AreYouSureInterview from "../../../../components/share/AreYouSureInterview";
+import { Timestamp } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 const StudentJobStatus = () => {
+  const navigate = useNavigate();
   useEffect(() => {
     document.title = "Job Application Status";
 
@@ -12,12 +16,15 @@ const StudentJobStatus = () => {
     };
   }, []);
 
+  const [showConfirmationPopup, setShowConfirmationPopup] = useState(false);
   const [selectedApplication, setSelectedApplication] = useState(null);
   const [applications, setApplications] = useState([]);
+  const [confirmedInterviewTimes, setConfirmedInterviewTimes] = useState({});
   const [sortConfig, setSortConfig] = useState({
     key: null,
     direction: "ascending",
   });
+  const [confirmationAction, setConfirmationAction] = useState(null);
 
   useEffect(() => {
     const fetchApplications = async () => {
@@ -40,20 +47,17 @@ const StudentJobStatus = () => {
             applicationsData.docs.map(async (doc) => {
               const application = doc.data();
 
-              // Try to fetch the job from the "jobs" collection
               let jobData = await db
                 .collection("jobs")
                 .doc(application.jobId)
                 .get();
 
-              // If the job is not found in "jobs," try "resolvedJobs"
               if (!jobData.exists) {
                 jobData = await db
                   .collection("resolvedJobs")
                   .doc(application.jobId)
                   .get();
 
-                // If the job is found in "resolvedJobs," set interviewStatus to "Job Closed"
                 if (jobData.exists) {
                   application.applicationStatus = "Job Closed";
                 }
@@ -79,6 +83,8 @@ const StudentJobStatus = () => {
                   : "No Schedule";
 
               return {
+                applicationId: doc.id,
+                jobId: application.jobId,
                 jobTitle: job ? job.title : "Unknown Job Title",
                 companyName: job ? job.userName : "Unknown Company",
                 state: job ? job.state : "Unknown State",
@@ -89,6 +95,26 @@ const StudentJobStatus = () => {
               };
             })
           );
+
+          const confirmedTimesData = await db
+            .collection("interviewRoom")
+            .where("uid", "==", user.uid)
+            .get();
+
+          const confirmedTimes = {};
+          confirmedTimesData.forEach((doc) => {
+            const data = doc.data();
+            const date = data.dateTime.toDate();
+            const localDateString = date.toLocaleString("en-US", {
+              timeZone: "Asia/Shanghai",
+            });
+            confirmedTimes[data.applicationId] = {
+              timeString: localDateString,
+              docId: doc.id, // Store the document ID as well
+            };
+          });
+
+          setConfirmedInterviewTimes(confirmedTimes);
 
           setApplications(applicationsArray);
         } else {
@@ -117,42 +143,137 @@ const StudentJobStatus = () => {
   const sortedApplications = [...applications];
   if (sortConfig.key) {
     sortedApplications.sort((a, b) => {
-      const valA = a[sortConfig.key];
-      const valB = b[sortConfig.key];
-      if (valA < valB) {
+      if (a[sortConfig.key] < b[sortConfig.key]) {
         return sortConfig.direction === "ascending" ? -1 : 1;
       }
-      if (valA > valB) {
+      if (a[sortConfig.key] > b[sortConfig.key]) {
         return sortConfig.direction === "ascending" ? 1 : -1;
       }
       return 0;
     });
   }
 
-  function formatInterviewSchedule(schedule) {
+  const confirmInterviewTime = (date, time, applicationId, jobId) => {
+    // Open the confirmation popup
+    setShowConfirmationPopup(true);
+
+    // Store the confirmation action in a variable
+    const confirmationAction = async () => {
+      const user = firebase.auth().currentUser;
+      if (user) {
+        try {
+          const combinedDateTimeString = `${date}T${time}:00.000`;
+
+          const dateTime = new Date(combinedDateTimeString);
+
+          if (isNaN(dateTime)) {
+            throw new Error("Invalid date or time provided.");
+          }
+
+          const firestoreTimestamp = Timestamp.fromDate(dateTime);
+
+          // Add the interview time to Firestore
+          const interviewRoomRef = await firebase
+            .firestore()
+            .collection("interviewRoom")
+            .add({
+              dateTime: firestoreTimestamp,
+              applicationId: applicationId,
+              jobId: jobId,
+              uid: user.uid,
+            });
+
+          // Navigate to the interview room using the newly created interview room ID
+          navigate(`/interview-room/${interviewRoomRef.id}`);
+        } catch (error) {
+          console.error("Error saving the interview time: ", error.message);
+        }
+      } else {
+        console.log("User is not authenticated.");
+      }
+
+      // Close the confirmation popup
+      setShowConfirmationPopup(false);
+    };
+
+    // Set the confirmation action
+    setConfirmationAction(() => confirmationAction);
+  };
+
+  const navigateToInterviewRoom = (interviewRoomDocId) => {
+    navigate(`/interview-room/${interviewRoomDocId}`);
+  };
+
+  const formatInterviewSchedule = (
+    schedule,
+    applicationId,
+    jobId,
+    application
+  ) => {
     if (!schedule) return null;
 
-    const scheduleParts = schedule.split(", ");
+    const confirmedTime = confirmedInterviewTimes[applicationId];
+    const isAnyTimeConfirmed = confirmedTime !== undefined;
 
-    const formattedParts = scheduleParts.map((part, index) => {
+    return schedule.split(", ").map((part, index) => {
       const [date, timePart] = part.split(" at ");
       const time = timePart?.trim();
+      const localDateTime = new Date(`${date}T${time}:00`);
+      const localDateTimeString = localDateTime.toLocaleString("en-US", {
+        timeZone: "Asia/Shanghai",
+      });
+
+      const isSelectedTime =
+        confirmedInterviewTimes[applicationId] &&
+        localDateTimeString ===
+          confirmedInterviewTimes[applicationId].timeString;
 
       if (date && time) {
         return (
-          <span key={index}>
-            <b style={{ color: "blue" }}>{date}</b> at{" "}
-            <b style={{ color: "blue" }}>{time}</b>
-            {index !== scheduleParts.length - 1 && ", "}
-          </span>
+          <tr key={index} className="interview-time-row">
+            <td colSpan="6">
+              <div className="interview-time-section">
+                <span>
+                  <b style={{ color: "blue" }}>{date}</b> at{" "}
+                  <b style={{ color: "blue" }}>{time} </b>
+                </span>
+                {isSelectedTime && (
+                  <span
+                    className="join-interview"
+                    onClick={() =>
+                      navigateToInterviewRoom(
+                        confirmedInterviewTimes[applicationId].docId
+                      )
+                    }
+                  >
+                    [Join Interview]
+                  </span>
+                )}
+                {!isAnyTimeConfirmed &&
+                  application.applicationStatus !== "Job Closed" && (
+                    <button
+                      className="confirm-interview-button"
+                      onClick={() =>
+                        confirmInterviewTime(date, time, applicationId, jobId)
+                      }
+                      disabled={isSelectedTime}
+                    >
+                      Confirm
+                    </button>
+                  )}
+              </div>
+            </td>
+          </tr>
         );
       } else {
-        return part;
+        return (
+          <tr key={index}>
+            <td colSpan="6">{part}</td>
+          </tr>
+        );
       }
     });
-
-    return formattedParts;
-  }
+  };
 
   return (
     <>
@@ -208,19 +329,32 @@ const StudentJobStatus = () => {
                     {application.applicationStatus}
                   </td>
                 </tr>
-                {selectedApplication === index && (
-                  <tr className="interview-schedule-row">
-                    <td colSpan="6">
-                      Interview Schedule:{" "}
-                      {formatInterviewSchedule(application.interviewSchedule)}
-                    </td>
-                  </tr>
-                )}
+                {selectedApplication === index &&
+                  formatInterviewSchedule(
+                    application.interviewSchedule,
+                    application.applicationId,
+                    application.jobId,
+                    application
+                  )}
               </React.Fragment>
             ))}
           </tbody>
         </table>
       </div>
+
+      {showConfirmationPopup && (
+        <AreYouSureInterview
+          show={showConfirmationPopup}
+          onConfirm={() => {
+            if (confirmationAction) {
+              confirmationAction();
+            }
+          }}
+          onCancel={() => {
+            setShowConfirmationPopup(false);
+          }}
+        />
+      )}
     </>
   );
 };

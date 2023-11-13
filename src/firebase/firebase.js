@@ -4,14 +4,13 @@ import "firebase/compat/firestore";
 import "firebase/compat/storage";
 
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_AUTOMATED_QUIZZING_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_AUTOMATED_QUIZZING_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_AUTOMATED_QUIZZING_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_AUTOMATED_QUIZZING_STORAGE_BUCKET,
-  messagingSenderId:
-    process.env.REACT_APP_AUTOMATED_QUIZZING_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_AUTOMATED_QUIZZING_APP_ID,
-  measurementId: process.env.REACT_APP_AUTOMATED_QUIZZING_MEASUREMENT_ID,
+  apiKey: "AIzaSyAk8C2FxTaPJONXzov0ktjSb_Qy8C0U2xs",
+  authDomain: "bcs-final-year-project.firebaseapp.com",
+  projectId: "bcs-final-year-project",
+  storageBucket: "bcs-final-year-project.appspot.com",
+  messagingSenderId: "597331548486",
+  appId: "1:597331548486:web:dd514684361126b09ead47",
+  measurementId: "G-P15ZYQVC91",
 };
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);

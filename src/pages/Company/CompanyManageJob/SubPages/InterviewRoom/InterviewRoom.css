@@ -1,0 +1,125 @@
+.ir-centered-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fafafa;
+}
+
+.ir-interview-room {
+  display: flex;
+  width: 80%;
+  height: 80vh;
+  margin: auto;
+  max-width: 1200px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.ir-video-area {
+  position: relative;
+  flex: 1;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ir-local-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ir-controls {
+  position: absolute;
+  justify-content: center;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 50px;
+}
+
+.ir-control-btn {
+  flex: 0 0 auto;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 10px;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+  font-size: 30px;
+}
+
+.ir-control-btn.end-call {
+  background: red;
+}
+
+.ir-control-btn.end-call:hover {
+  background: darkred;
+}
+
+.ir-chat-area {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+
+.ir-chat-display {
+  padding: 10px;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.ir-chat-message {
+  margin-bottom: 10px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+
+.ir-chat-form {
+  display: flex;
+}
+
+.ir-chat-input {
+  flex-grow: 1;
+  padding: 10px;
+  margin-bottom: 5px;
+  border: none;
+  outline: none;
+}
+
+.ir-send-button {
+  padding: 10px 20px;
+  background: #5a36a3;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.ir-send-button:hover {
+  background: #4b249a;
+}
+
+.ir-chat-input {
+  flex-grow: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+  margin-left: 10px;
+}

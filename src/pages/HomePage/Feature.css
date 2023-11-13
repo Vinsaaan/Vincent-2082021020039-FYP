@@ -1,0 +1,108 @@
+.feature-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 100px;
+  text-align: center;
+  margin-top: 180px;
+  padding: 20px;
+  width: 90%;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  background-color: #2c3863;
+  align-items: center;
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.6s, transform 0.6s;
+}
+
+.feature-item::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  border-radius: 8px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.4);
+}
+
+.feature-icon {
+  font-size: 36px;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.feature-title {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.feature-description {
+  font-size: 18px;
+  margin-top: 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s, transform 0.3s;
+  will-change: opacity, transform;
+}
+
+.feature-item:hover .feature-description {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.feature-item:hover .feature-icon ~ .feature-description {
+  opacity: 1;
+  transform: translateY(0);
+}
+.feature-icon:hover + .feature-title,
+.feature-icon:hover + .feature-description {
+  display: block;
+}
+
+.feature-item:hover .feature-icon {
+  transform: translateY(-10px);
+}
+
+.feature-item:hover {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-in-left {
+  animation: slide-in-left 0.6s forwards;
+}
+
+.slide-in-right {
+  animation: slide-in-right 0.6s forwards;
+}

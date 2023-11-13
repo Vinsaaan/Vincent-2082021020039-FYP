@@ -1,0 +1,44 @@
+.early-access-section {
+  max-width: 790px;
+  background: #161e36;
+  color: white;
+  text-align: center;
+  border-radius: 50px;
+  box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  margin-top: 180px;
+  margin-bottom: -130px;
+  padding: 40px 0;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+h2 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.home-signup-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.home-signup-form .home-btn-signup {
+  font-size: 17px;
+  height: 50px;
+  width: 270px;
+  border: none;
+  border-radius: 20px;
+  background-color: #1f98f4;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.home-signup-form .home-btn-signup:hover {
+  background-color: #1a7ec8;
+}

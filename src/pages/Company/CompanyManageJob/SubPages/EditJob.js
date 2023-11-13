@@ -173,7 +173,7 @@ const EditJob = () => {
       });
 
       alert("Job updated!");
-      navigate("/companymanagejob");
+      navigate("/manage-job");
     } catch (error) {
       console.error("Error updating job:", error);
       alert("Failed to update job. Please try again.");

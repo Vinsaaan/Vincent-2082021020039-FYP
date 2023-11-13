@@ -97,7 +97,7 @@ body.lecturer-view-student-background {
   padding: 10px;
   background-color: #f9f9f9;
   border-top: 1px solid #ccc;
-  text-align: left; /* Return text alignment to left for grades */
+  text-align: left;
 }
 
 .student-item div,
@@ -105,4 +105,26 @@ body.lecturer-view-student-background {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.update-comment {
+  background-color: rgb(52, 106, 255);
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.update-comment:hover {
+  background-color: rgb(0, 0, 255);
+  color: white;
+}
+
+.write-comment {
+  background-color: rgb(175, 0, 175);
+  color: white;
+  transition: background-color 0.3s;
+}
+
+.write-comment:hover {
+  background-color: rgb(140, 0, 140);
+  color: white;
 }

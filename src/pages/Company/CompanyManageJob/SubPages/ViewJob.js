@@ -7,11 +7,11 @@ import "./ViewJob.css";
 const ViewJob = () => {
   useEffect(() => {
     document.title = "Applicants Details List";
-
     return () => {
       document.title = "EduBridge";
     };
   }, []);
+
   const { jobId } = useParams();
   const [applicants, setApplicants] = useState([]);
   const [jobInfo, setJobInfo] = useState(null);
@@ -39,7 +39,6 @@ const ViewJob = () => {
         for (const doc of snapshot.docs) {
           const data = doc.data();
 
-          // Check if there's an interview document with this applicant's ID
           const interviewSnapshot = await db
             .collection("interviews")
             .where("applicationId", "==", doc.id)
@@ -135,15 +134,25 @@ const ViewJob = () => {
                   <td className={`status-${applicant.status.toLowerCase()}`}>
                     {applicant.status}
                   </td>
-
                   <td>
-                    <a
-                      href={`/applicant-detail/${applicant.applicationId}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <button
+                      onClick={() => {
+                        const win = window.open(
+                          `/applicant-detail/${applicant.applicationId}`,
+                          "_blank"
+                        );
+                        win.focus();
+                      }}
+                      style={{
+                        background: "none",
+                        border: "none",
+                        color: "#007bff",
+                        cursor: "pointer",
+                        textDecoration: "underline",
+                      }}
                     >
                       View Details
-                    </a>
+                    </button>
                   </td>
                 </tr>
               ))}

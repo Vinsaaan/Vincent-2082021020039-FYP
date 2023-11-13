@@ -1,23 +1,16 @@
-.App {
-  text-align: center;
-}
-
-.App-index {
+.HomePage-index {
   background-color: #2c3863;
-  min-height: 100vh;
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-  margin: 0;
 }
 
-body,
-html {
-  margin: 0;
-  height: 100%;
+.App {
+  text-align: center;
 }
 
 @keyframes fadeInOut {
@@ -26,18 +19,18 @@ html {
   }
   20% {
     opacity: 1;
-  } /* Adjusted the percentage for 1 sec fadeIn */
+  }
   80% {
     opacity: 1;
-  } /* Stay fully visible until 4 sec */
+  }
   100% {
     opacity: 0;
-  } /* Fade out in the last 1 sec */
+  }
 }
 
 .icon-fade,
 .text-fade {
-  animation: fadeInOut 4.5s infinite; /* Updated timing to 4.5 sec */
+  animation: fadeInOut 4.5s infinite;
 }
 
 .banner {
@@ -47,8 +40,4 @@ html {
 .icon {
   max-width: 100px;
   margin-bottom: 5px;
-}
-
-.no-scroll {
-  overflow: hidden;
 }

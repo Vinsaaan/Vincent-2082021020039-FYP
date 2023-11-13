@@ -19,6 +19,18 @@ body.company-view-student-background {
   font-weight: bold;
 }
 
+.title-button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.dynamic-title {
+  flex-grow: 1;
+  text-align: center;
+}
+
 .spacing {
   margin-top: 50px;
 }
@@ -36,6 +48,7 @@ body.company-view-student-background {
   font-weight: bold;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .student-item {
@@ -47,15 +60,17 @@ body.company-view-student-background {
 }
 
 .student-item:hover {
-  background-color: #e6f7ff !important;
+  background-color: #e6f7ff;
 }
 
 .student-item.even {
   background-color: #cfe9ff;
+  cursor: pointer;
 }
 
 .student-item.odd {
   background-color: #cfdeff;
+  cursor: pointer;
 }
 
 .table-header div,
@@ -109,4 +124,36 @@ body.company-view-student-background {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.view-toggle-button {
+  background-color: #2196f3;
+  color: white;
+}
+
+.view-toggle-button {
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  margin: 10px;
+  float: right;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 3px;
+}
+
+.view-toggle-button.blue {
+  background-color: #007bff;
+  color: white;
+}
+
+.view-toggle-button.green {
+  background-color: #28a745;
+  color: white;
+}
+
+.view-toggle-button:hover {
+  opacity: 0.8; /* Simple hover effect */
 }

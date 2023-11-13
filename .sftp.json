@@ -1,0 +1,10 @@
+{
+  "name": "VincentFYP",
+  "host": "vinsaaan.com",
+  "protocol": "ftp",
+  "port": 21,
+  "username": "u494906141",
+  "password": "Vvincent1314520!",
+  "remotePath": "/path/to/your/domain/public_html",
+  "uploadOnSave": true
+}
