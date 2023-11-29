@@ -11,7 +11,7 @@ import feedbackIcon from "../../assets/images/company/sidebar/feedbackIcon.png";
 import reportBugIcon from "../../assets/images/company/sidebar/reportBugIcon.png";
 import logo from "../../assets/images/company/sidebar/Logo.png";
 import AreYouSureLogOut from "../../components/share/AreYouSureLogOut";
-import "../sidebar/LecturerCompanySidebar.css";
+import "../sidebar/Sidebar.css";
 
 const CompanySidebar = () => {
   const initialState =
@@ -73,22 +73,24 @@ const CompanySidebar = () => {
           </ul>
         </div>
         <div className="bottom-links">
-          <li>
-            <Link to="/feedback">
-              <img src={feedbackIcon} alt="Feedback" />
-              Feedback
-            </Link>
-          </li>
-          <li>
-            <Link to="/report-bug">
-              <img src={reportBugIcon} alt="Report Bug" />
-              Report Bug
-            </Link>
-          </li>
-          <li id="sidebar-sign-out" onClick={handleSignOut}>
-            <img src={signoutIcon} alt="Sign Out" />
-            Sign Out
-          </li>
+          <ul>
+            <li>
+              <Link to="/feedback">
+                <img src={feedbackIcon} alt="Feedback" />
+                <span>Feedback</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/report-bug">
+                <img src={reportBugIcon} alt="Report Bug" />
+                <span>Report Bug</span>
+              </Link>
+            </li>
+            <li id="sidebar-sign-out" onClick={handleSignOut}>
+              <img src={signoutIcon} alt="Sign Out" />
+              <span className="bold-text">Sign Out</span>
+            </li>
+          </ul>
         </div>
         <div className="arrow-icon" onClick={toggleSidebarLock}>
           <img

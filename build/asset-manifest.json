@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.dee6bb83.css",
-    "main.js": "/static/js/main.1a82044b.js",
+    "main.css": "/static/css/main.a98f5fc1.css",
+    "main.js": "/static/js/main.e5b7d605.js",
     "static/media/JobList.jpg": "/static/media/JobList.87c78241928efe0e556f.jpg",
     "static/media/Dashboard.jpg": "/static/media/Dashboard.3ea0145b27b81fefc37b.jpg",
     "static/media/ApplicationList.jpg": "/static/media/ApplicationList.187ca5926db7b145a487.jpg",
@@ -32,7 +32,7 @@
     "static/media/dashboardIcon.png": "/static/media/dashboardIcon.21842bb45482146be045.png",
     "static/media/jobIcon.png": "/static/media/jobIcon.159669df45827104b414.png",
     "static/media/education.png": "/static/media/education.5d5723cb246bc2f52e5d.png",
-    "static/media/delIcon.png": "/static/media/delIcon.89d6fce06e3656859e76.png",
+    "static/media/delIcon.png": "/static/media/delIcon.5cafc44196e858948d15.png",
     "static/media/quizIcon.png": "/static/media/quizIcon.b4198476eac05c24089a.png",
     "static/media/signoutIcon.png": "/static/media/signoutIcon.9d67b99ab930ab9d721b.png",
     "static/media/addIcon.png": "/static/media/addIcon.089eb12e9448d9b94951.png",
@@ -42,11 +42,11 @@
     "static/media/WhatsApp.png": "/static/media/WhatsApp.aa966a54109ebeb57655.png",
     "static/media/student.png": "/static/media/student.a3636e1a2568e7dbda16.png",
     "index.html": "/index.html",
-    "main.dee6bb83.css.map": "/static/css/main.dee6bb83.css.map",
-    "main.1a82044b.js.map": "/static/js/main.1a82044b.js.map"
+    "main.a98f5fc1.css.map": "/static/css/main.a98f5fc1.css.map",
+    "main.e5b7d605.js.map": "/static/js/main.e5b7d605.js.map"
   },
   "entrypoints": [
-    "static/css/main.dee6bb83.css",
-    "static/js/main.1a82044b.js"
+    "static/css/main.a98f5fc1.css",
+    "static/js/main.e5b7d605.js"
   ]
 }

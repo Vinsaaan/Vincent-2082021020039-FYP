@@ -11,7 +11,7 @@ import arrowIcon from "../../assets/images/lecturer/dashboard/arrowIcon.png";
 import lockIcon from "../../assets/images/lecturer/dashboard/lockIcon.png";
 import logo from "../../assets/images/lecturer/dashboard/Logo.png";
 import AreYouSureLogOut from "../../components/share/AreYouSureLogOut";
-import "../sidebar/LecturerCompanySidebar.css";
+import "../sidebar/Sidebar.css";
 
 const LecturerSidebar = () => {
   const [showLogoutConfirmation, setShowLogoutConfirmation] = useState(false);
@@ -25,7 +25,7 @@ const LecturerSidebar = () => {
   }, [isSidebarLocked]);
 
   // This will now toggle the visibility of the logout confirmation
-  const handleSignOutClick = () => {
+  const handleSignOut = () => {
     setShowLogoutConfirmation(true);
   };
 
@@ -76,22 +76,24 @@ const LecturerSidebar = () => {
           </ul>
         </div>
         <div className="bottom-links">
-          <li>
-            <Link to="/feedback">
-              <img src={feedbackIcon} alt="Feedback" />
-              Feedback
-            </Link>
-          </li>
-          <li>
-            <Link to="/report-bug">
-              <img src={reportBugIcon} alt="Report Bug" />
-              Report Bug
-            </Link>
-          </li>
-          <li id="sidebar-sign-out" onClick={handleSignOutClick}>
-            <img src={signoutIcon} alt="Sign Out" />
-            Sign Out
-          </li>
+          <ul>
+            <li>
+              <Link to="/feedback">
+                <img src={feedbackIcon} alt="Feedback" />
+                <span>Feedback</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/report-bug">
+                <img src={reportBugIcon} alt="Report Bug" />
+                <span>Report Bug</span>
+              </Link>
+            </li>
+            <li id="sidebar-sign-out" onClick={handleSignOut}>
+              <img src={signoutIcon} alt="Sign Out" />
+              <span className="bold-text">Sign Out</span>
+            </li>
+          </ul>
         </div>
         <div className="arrow-icon" onClick={toggleSidebarLock}>
           <img
