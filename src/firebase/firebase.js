@@ -4,7 +4,7 @@ import "firebase/compat/firestore";
 import "firebase/compat/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAk8C2FxTaPJONXzov0ktjSb_Qy8C0U2xs",
+  apiKey: "-",
   authDomain: "bcs-final-year-project.firebaseapp.com",
   projectId: "bcs-final-year-project",
   storageBucket: "bcs-final-year-project.appspot.com",
